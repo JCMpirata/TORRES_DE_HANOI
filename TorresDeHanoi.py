@@ -25,17 +25,8 @@ class TorresDeHanoi(object):
     
     
 if __name__ == "__main__":
-    p1 = P()
-    p2 = P()
-    p3 = P()
-    for i in range(5, 0, -1):
-        P.apilar(p1, i)
-    print ("Pila 1:", p1)
-    print ("Pila 2:", p2)
-    print ("Pila 3:", p3)
-    print
-    hanoi = TorresDeHanoi(5, p1, p2, p3)
-    hanoi.resolver(p1, p2, p3)
-    print ("Pila 1:", p1)
-    print ("Pila 2:", p2)
-    print ("Pila 3:", p3)
+    num_discos = input("Ingrese el numero de discos: ")
+    torres = TorresDeHanoi(num_discos, P(), P(), P())
+    for i in range(num_discos, 0, -1):
+        P.apilar(torres.origen, i)
+        
