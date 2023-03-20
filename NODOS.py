@@ -33,5 +33,17 @@ class Pila(object):
         else:
             return None
         
+    def barridoPila(pila):
+        aux = Pila()
+        while not pila.pilaVacia():
+            dato = pila.desapilar()
+            print(dato)
+            aux.apilar(aux, dato)
+
+        while not aux.pilaVacia():
+            dato = aux.desapilar()
+            pila.apilar(pila, dato)
+
+        
     
         
