@@ -1,48 +1,42 @@
-class nodoPila:
+class SNode:
+    def __init__(self, elem, next =None):
+        self.elem = elem
+        self.next = next
 
-    info, sig = None, None
 
-class Pila(object):
-
+class Pila:
     def __init__(self):
-        self.cima = None
-        self.tamanio = 0
+        self._head = None
+        self.len = 0
 
-    def apilar(pila, dato):
-        nodo = nodoPila()
-        nodo.info = dato
-        nodo.sig = pila.cima
-        pila.cima = nodo
-        pila.tamanio += 1
+    def push(self, e):
+        newNode = SNode(e, self._head)
+        self._head = newNode
+        self.len += 1
 
-    def desapilar(pila):
-        x = pila.cima.info
-        pila.cima = pila.cima.sig
-        pila.tamanio -= 1
-        return x
-    
-    def pilaVacia(pila):
-        return pila.cima == None
-    
-    def tamanioPila(pila):
-        return pila.tamanio
-    
-    def encimaPila(pila):
-        if pila.cima is not None:
-            return pila.cima.info
+    def pop(self):
+        res = None
+        if not self.isEmpty():
+            res = self._head.elem
+            self._head = self._head.next
         else:
-            return None
-        
-    def barridoPila(pila):
-        aux = Pila()
-        while not pila.pilaVacia():
-            dato = pila.desapilar()
-            print(dato)
-            aux.apilar(aux, dato)
+            print("Fila vacia!!!")
+        return res
 
-        while not aux.pilaVacia():
-            dato = aux.desapilar()
-            pila.apilar(pila, dato)
+    def isEmpty(self):
+        return self._head is None
+
+    def __len__(self):
+        return self.len
+
+    def __str__(self):
+
+        result = ""
+        while not self.isEmpty():
+            result += f"{self._head.elem}, "
+            self._head = self._head.next
+            self.len -= 1
+        return result
 
         
     
