@@ -3,25 +3,25 @@ from NODOS import Pila
 
 class TorresDeHanoi(object):
 
-    def __init__(n, origen, destino, auxiliar):
-        n.n = n
-        n.origen = origen
-        n.destino = destino
-        n.auxiliar = auxiliar
+    def __init__(discos, origen, destino, auxiliar):
+        discos.n = discos
+        discos.origen = origen
+        discos.destino = destino
+        discos.auxiliar = auxiliar
 
-    def mover(n, origen, destino):
+    def mover(discos, origen, destino):
         Pila.apilar(destino, Pila.desapilar(origen))
 
-    def resolver(n, origen, destino, auxiliar):
-        if n == 1:
-            n.mover(origen, destino)
+    def resolver(discos, origen, destino, auxiliar):
+        if discos == 1:
+            discos.mover(origen, destino)
         else:
-            n.resolver(origen, auxiliar, destino, n-1)
-            n.mover(origen, destino)
-            n.resolver(auxiliar, destino, origen, n-1)
+            discos.resolver(origen, auxiliar, destino, discos-1)
+            discos.mover(origen, destino)
+            discos.resolver(auxiliar, destino, origen, discos-1)
 
-    def __str__(n):
-        return "Torres de Hanoi de %d discos" % n.n
+    def __str__(discos):
+        return "Torres de Hanoi con {} discos resuelto en {} movimientos".format(discos.n, 2**discos.n-1)
     
     
 if __name__ == "__main__":
