@@ -1,5 +1,5 @@
 from NODOS import nodoPila as nP
-from NODOS import Pila as P
+from NODOS import Pila
 
 class TorresDeHanoi(object):
 
@@ -10,7 +10,7 @@ class TorresDeHanoi(object):
         n.auxiliar = auxiliar
 
     def mover(n, origen, destino):
-        P.apilar(destino, P.desapilar(origen))
+        Pila.apilar(destino, Pila.desapilar(origen))
 
     def resolver(n, origen, destino, auxiliar):
         if n == 1:
@@ -26,7 +26,10 @@ class TorresDeHanoi(object):
     
 if __name__ == "__main__":
     num_discos = input("Ingrese el numero de discos: ")
-    torres = TorresDeHanoi(num_discos, P(), P(), P())
+    torre_origen = Pila()
+    torre_auxiliar = Pila()
+    torre_destino = Pila()
+    torres = TorresDeHanoi(num_discos, torre_origen, torre_auxiliar, torre_destino)
     for i in range(num_discos, 0, -1):
-        P.apilar(torres.origen, i)
+        Pila.apilar(torres.origen, i)
         
